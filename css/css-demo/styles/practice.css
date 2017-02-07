@@ -12,3 +12,11 @@
 .lists {
 	font-size: .8em;
 }
+
+li::first-letter {
+	font-weight: bold
+}
+
+#personal-objective h2 {
+	color: red;
+}

@@ -34,18 +34,41 @@ figcaption {
 }
 
 body {
-   width: 960px;
+   max-width: 960px;
  }
 
 
  main {
-    width:750px;
+    width:75%;
     display: inline-block;
 
   }
 
 .sidebar{
-  width: 200px;
+  width: 20%;
   display: inline-block;
   vertical-align: top;
+}
+
+/*@media screen and (max-width: 500px) {
+  body {
+    background-color: hotpink;
+  }
+} */
+
+@media screen and (max-width: 600px) {
+  img {
+    max-width: 75%;
+  }
+
+  .sidebar{
+    display:block;
+    padding-left:25%;
+    top:50%;
+    width:100%;
+  }
+
+  main {
+    margin-left:60px;
+  }
 }

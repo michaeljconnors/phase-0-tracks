@@ -1,0 +1,45 @@
+Release 0 - Elevator Algorithm
+
+-Identify square box panel off to side of elevator
+-Move up to elevetor panel
+-press button
+-look back to see if anyone is behind you
+-if not go straight back two feet
+-if there is wait there
+-Wait until elevator door opens
+-if no one in the elevator enter elevator doorway
+-if there are people, wait until unloaded then enter elevator door way
+-upon entering look to left or right for buttons
+-if someone is standing next to the buttons ask for desired floor level to be selected and go to the furthest emptiest space
+-if no one is standing next to the buttons upon entering, approach buttons and select desired floor, then go to furthest emtiest space
+-Wait in space until the door has closed, and door opens at desired floor level indicated by either a screen near the top of the elevator or when door opens a written sign that is visible stating your desired floor.
+- if with no one exit elevator
+-if with others exit in an orderly fashion
+
+
+Release 1 - Filling up gas
+
+- open fuel door
+- Get out of car
+- go to fuel port and twist off lid
+- approach filling station
+- get out credit card
+- swipe credit card
+- enter zip code
+- select no for car wash
+- shift gaze right
+- if 87 grade selct by pressing
+- if no 87 grade press 89 grade
+- grab fuel hose with one hand
+- insert hose into port
+- with other hand press trigger up and lock
+- wait a minute or two until gas stop filling
+- release trigger
+- shake off remaining gas in tank
+- turn and insert hose back into station
+- hit yes for reciept
+- turn and twist port back on
+- close car port
+- turn to gas filling station
+- grab reciept
+- get back into car

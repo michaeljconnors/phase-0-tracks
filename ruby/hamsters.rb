@@ -30,4 +30,17 @@ else
 	age = age.to_f
 end
 
-puts age
+puts "Your hamsters name is #{hamster_name}. The volume level of #{hamster_name}'s on a scale to 1 to 10 is #{volume_scale}. #{hamster_name}'s fur color is #{fur_color}."
+
+if candidate == "y"
+	puts "#{hamster_name} is a great candidate"
+else
+	puts "#{hamster_name} is not a great candidate"
+end
+
+
+if age == nil
+	puts "age unknown"
+else 
+	puts "#{hamster_name} estimated age is #{age.to_f}"
+end

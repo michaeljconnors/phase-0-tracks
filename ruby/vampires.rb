@@ -43,8 +43,33 @@ if insurance == "y"
 else
 	insurance = false
 end
+puts "List all allergies. Type 'done' when finished."
 
-if age == true && (garlic_bread == true || insurance == true)
+valid_input = false
+
+until valid_input
+
+allergies = gets.chomp
+
+if allergies == "done"
+ 
+valid_input = true
+ 
+elsif allergies == "sunshine"
+ 
+valid_input = true
+ 
+else
+   
+valid_input = false
+ 
+end
+ 
+end
+
+if allergies == "sunshine"
+  puts "Probably a vampire"
+elsif age == true && (garlic_bread == true || insurance == true)
 		puts "Probably not a vampire."
 elsif (age == false && garlic_bread == false && insurance == false)
 	puts "Almost certainly a vampire."	

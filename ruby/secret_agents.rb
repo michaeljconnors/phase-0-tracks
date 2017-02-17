@@ -10,16 +10,22 @@
 #subract the number one from the variable and then pull the new number from the alphabet
 #add letter to the word then loop
 
-secret_password = "robinhood"
+puts "What do you want your password to be?"
 
+password = gets.chomp
 
+def encrypt(secret_password)
 index = 0
 while index < secret_password.length
   secret_password[index] = secret_password[index].next
   index += 1
 end
-
 puts secret_password
+end
+
+
+
+def decrypt(secret_password)
 index = 0
 word = ""
 right_number = 0
@@ -35,4 +41,8 @@ end
 
 puts word
 
+end
+
+encrypt(password)
+decrypt(password)
 

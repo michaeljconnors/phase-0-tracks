@@ -10,10 +10,6 @@
 #subract the number one from the variable and then pull the new number from the alphabet
 #add letter to the word then loop
 
-puts "What do you want your password to be?"
-
-password = gets.chomp
-
 def encrypt(secret_password)
 	index = 0
 	while index < secret_password.length
@@ -24,7 +20,7 @@ def encrypt(secret_password)
 		end
 		index += 1
 	end
-	 secret_password
+	secret_password
 end
 
 
@@ -42,11 +38,38 @@ def decrypt(secret_password)
 		index += 1
 		word += solution
 	end
-  word 
+	word
 end
 
-puts encrypt(password)
-puts decrypt(password)
+
+
+answer_2 = false
+
+while answer_2 == false
+	puts "Would you like to decrypt or encrypt password?"
+
+	answer = gets.chomp
+	if answer == "encrypt" || "decrypt"
+		answer_2 = true
+	else
+		puts "Invalid input"
+		answer_2 = false
+	end
+	puts "What is the password?"
+
+	password = gets.chomp
+
+	if answer == "encrypt"
+		p encrypt(password)
+		answer_2 = true
+	elsif answer == "decrypt"
+		p decrypt(password)
+		answer_2 = true
+	else
+		puts "Invalid input"
+		answer_2 = false
+	end
+end
 
 decrypt(encrypt("swordfish"))
 

@@ -71,7 +71,7 @@ while answer_2 == false
 	end
 end
 
-decrypt(encrypt("swordfish"))
+p decrypt(encrypt("swordfish"))
 
 #This code works by moving the index up by one to scramble the password. The decript section takes the scrambled password and compares those letters in the password to the alphabet and then subtracts one index space to relign with alphabet to give the correct password.
 

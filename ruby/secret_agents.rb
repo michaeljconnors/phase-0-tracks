@@ -15,34 +15,40 @@ puts "What do you want your password to be?"
 password = gets.chomp
 
 def encrypt(secret_password)
-index = 0
-while index < secret_password.length
-  secret_password[index] = secret_password[index].next
-  index += 1
-end
-puts secret_password
+	index = 0
+	while index < secret_password.length
+		if secret_password[index] == "z"
+			secret_password[index] = "a"
+		else
+			secret_password[index] = secret_password[index].next
+		end
+		index += 1
+	end
+	 secret_password
 end
 
 
 
 def decrypt(secret_password)
-index = 0
-word = ""
-right_number = 0
+	index = 0
+	word = ""
+	right_number = 0
 
-while index < secret_password.length
-  letter = secret_password[index]
-  number = "abcdefghijklmnopqrstuvwxyz".index(letter)
-  right_number = number - 1
-  solution = "abcdefghijklmnopqrstuvwxyz"[right_number]
-  index += 1
-  word += solution
+	while index < secret_password.length
+		letter = secret_password[index]
+		number = "abcdefghijklmnopqrstuvwxyz".index(letter)
+		right_number = number - 1
+		solution = "abcdefghijklmnopqrstuvwxyz"[right_number]
+		index += 1
+		word += solution
+	end
+  word 
 end
 
-puts word
+puts encrypt(password)
+puts decrypt(password)
 
-end
+decrypt(encrypt("swordfish"))
 
-encrypt(password)
-decrypt(password)
+#This code works by moving the index up by one to scramble the password. The decript section takes the scrambled password and compares those letters in the password to the alphabet and then subtracts one index space to relign with alphabet to give the correct password.
 

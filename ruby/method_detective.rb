@@ -38,15 +38,23 @@ p " suspects".insert(0, "the usual")
 # "The case of the disappearing last letter".<???>
 # => "The case of the disappearing last lette"
 
+p "The case of the disappearing last letter"[0...-1]
+
 # "The mystery of the missing first letter".<???>
 # => "he mystery of the missing first letter"
+
+p "The mystery of the missing first letter"[1...40]
 
 # "Elementary,    my   dear        Watson!".<???>
 # => "Elementary, my dear Watson!"
 
+p "Elementary,    my   dear        Watson!".squeeze(" ")
+
 # "z".<???>
 # => 122 
 # (What is the significance of the number 122 in relation to the character z?)
+
+p "z".bytes
 
 # "How many times does the letter 'a' appear in this string?".<???>
 # => 4

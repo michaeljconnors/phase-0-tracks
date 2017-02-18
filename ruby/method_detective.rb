@@ -7,20 +7,33 @@
 # "iNvEsTiGaTiOn".<???>
 # => “InVeStIgAtIoN”
 
+p "iNvEsTiGaTiOn".swapcase
+
 # "zom".<???>
 # => “zoom”
+
+p "zom".insert(1, 'o')
+
 
 # "enhance".<???>
 # => "    enhance    "
 
+p "enhance".center(4)
+
 # "Stop! You’re under arrest!".<???>
 # => "STOP! YOU’RE UNDER ARREST!"
+
+p "Stop! You’re under arrest!".upcase
 
 # "the usual".<???>
 #=> "the usual suspects"
 
+p "the usual".insert(9, " suspects")
+
 # " suspects".<???>
 # => "the usual suspects"
+
+p " suspects".insert(0, "the usual")
 
 # "The case of the disappearing last letter".<???>
 # => "The case of the disappearing last lette"
@@ -37,3 +50,5 @@
 
 # "How many times does the letter 'a' appear in this string?".<???>
 # => 4
+
+p "How many times does the letter 'a' appear in this string?".count "a"

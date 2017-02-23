@@ -1,6 +1,6 @@
 football_team = {
   offense: {
-    coach: 'Gary True',
+    coach: 'gary',
     trench_players: {
       center: "Bob",
       guard: "Allen",
@@ -15,7 +15,7 @@ football_team = {
     
   },
   defense: {
-    coach: 'Bill Riot',
+    coach: 'Bill',
     trench_players: {
       tackle: "Sam",
       defense_End: "Marcus",
@@ -29,5 +29,17 @@ football_team = {
     
   }
 }
+
+p football_team[:offense][:coach].capitalize!
+
+p football_team[:offense][:strengths].push("screens")
+
+p football_team[:offense][:strengths].reverse
+
+p football_team[:offense][:skilled_players][:tight_end] = "Gunner"
+
+p football_team[:defense][:skilled_players][:safety] = "Robby"
+
+p football_team[:defense][:strengths].push("block_passes")
 
 p football_team

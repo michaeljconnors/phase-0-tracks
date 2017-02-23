@@ -7,21 +7,17 @@
 
 vowels = ["a","e","i","o","u","a"] 
 changed_name = []
+changed_name_2 = []
 
 puts "What is your first and last name?"
 
-user_name = "mike connors" #gets.chomp
+user_name = "Mike Connors" #gets.chomp
 
 def swap(x)
 new_name = x.split(' ').reverse
 new_name.join(' ')
 end
 
-swapped_name = swap(user_name)
-
-swapped_array = swapped_name.split('')
-
-p swapped_array
 
 def next_vowel(x)
   
@@ -37,9 +33,48 @@ x.map! do |x|
 	  changed_name << "u"
 	  elsif x == "u" 
 	  changed_name << "a"
+	  elsif x == " " 
+	  changed_name << " "
 	else
 	changed_name << x.next
 end
-changed_name 
+changed_name.join('') 
 end
 end
+
+
+
+def next_consonant(x)
+  
+  x.map! do |x|
+  changed_name_2 = []
+	if x == "a" 
+	  changed_name_2 << "b"
+	  elsif x == "e" 
+	  changed_name_2 << "d"
+	  elsif x == "i" 
+	  changed_name_2 << "g"
+	  elsif x == "o" 
+	  changed_name_2 << "p"
+	  elsif x == "u" 
+	  changed_name_2 << "v"
+	else
+	changed_name_2 << x
+end
+changed_name_2.join('')
+end
+end
+
+swapped_name = swap(user_name)
+
+swapped_array = swapped_name.split('')
+
+p swapped_array
+
+second_phase = next_vowel(swapped_array)
+
+p second_phase
+
+final_phase = next_consonant(second_phase)
+
+p final_phase

@@ -122,14 +122,12 @@ end
 p contain(emotion)
 
 # method sees what filter satisfies the condition of the data structure
-emotion.values_at("emotion_4", "emotion_1")
 
-p emotion
-
-# another way
 def filter(x)
-x.reject {|emotion, value| emotion.length < 8}
+x.reject {|emotion, value| value.length <= 4}
 end
+
+filter(emotion)
 
 p filter(emotion)
 
@@ -142,4 +140,8 @@ numbers = {
   "Tom" => 6
 }
 
-numbers.drop_while {|numbers, quantity| quantity < 4}
+def num(x)
+  x.drop_while {|numbers, quantity| quantity < 4}
+end
+
+p num(numbers)

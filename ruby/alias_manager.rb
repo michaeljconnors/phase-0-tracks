@@ -19,3 +19,27 @@ end
 
 swapped_name = swap(user_name)
 
+swapped_array = swapped_name.split('')
+
+p swapped_array
+
+def next_vowel(x)
+  
+x.map! do |x|
+  changed_name = []
+	if x == "a" 
+	  changed_name << "e"
+	  elsif x == "e" 
+	  changed_name << "i"
+	  elsif x == "i" 
+	  changed_name << "o"
+	  elsif x == "o" 
+	  changed_name << "u"
+	  elsif x == "u" 
+	  changed_name << "a"
+	else
+	changed_name << x.next
+end
+changed_name 
+end
+end

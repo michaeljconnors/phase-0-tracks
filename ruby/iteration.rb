@@ -58,6 +58,8 @@ p world_oceans
 
 # Release 2 - Array
 
+# Array
+
 sports = ["basketball", "football", "soccer", "wrestling", "swimming"]
 
 # method sees if string length is less than specified and then deletes
@@ -93,12 +95,51 @@ p drop(numbers)
 
 # Hash
 
-world_oceans = {
-  :emotion_1 => 'angry', 
-  :emotion_2 => 'sad', 
-  :emotion_3 => 'happy', 
-  :emotion_4 => 'estatic', 
-  :emotion_5 => 'livid'
+emotion = {
+  "emotion_1" => 'angry', 
+  "emotion_2" => 'sad', 
+  "emotion_3" => 'happy', 
+  "emotion_4" => 'estatic', 
+  "emotion_5" => 'livid'
   
 }
 
+#emotion.delete_if {|key, value| value.length <= 4 }   
+
+def letters(x)
+  x.delete_if {|key, value| value.length <= 4 } 
+end
+
+p letters(emotion) 
+
+
+# method to see if it contains certain specified letters
+
+def contain(x)
+x.keep_if {|key, value| value =~ /[pe]/ }
+end
+
+p contain(emotion)
+
+# method sees what filter satisfies the condition of the data structure
+emotion.values_at("emotion_4", "emotion_1")
+
+p emotion
+
+# another way
+def filter(x)
+x.reject {|emotion, value| emotion.length < 8}
+end
+
+p filter(emotion)
+
+numbers = {
+  "Bob" => 1,
+  "Suzie" => 2,
+  "Sally" => 3,
+  "Rob" => 4,
+  "Dod" => 5,
+  "Tom" => 6
+}
+
+numbers.drop_while {|numbers, quantity| quantity < 4}

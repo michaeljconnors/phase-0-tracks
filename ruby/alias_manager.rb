@@ -55,7 +55,7 @@ user_name = gets.chomp
 swapped_name = swap(user_name)
 swapped_array = swapped_name.split('')
 final_phase = next_letter(swapped_array).join('')
-final_phase
+puts final_phase
 break if user_name == "quit"
 alias_names[user_name] = final_phase
 end

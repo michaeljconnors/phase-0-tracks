@@ -30,3 +30,31 @@ value = fibonacci(magic_number)
 new_value = value[-1]
 
 p new_value == 218922995834555169026
+
+numbers = [24, 37, 12, 100, 35, 1]
+
+
+# First come up with your array
+# create a method
+# have the method take your array and go through each array item and categorize them
+# after categorizing them sort and place items in the array in the correct order by swapping them around
+# then print array
+
+def bubble_sort_array(x)
+  n = x.length - 1
+  loop do
+  swapped = false  
+  n.times do |y|
+  if x[y] > x[y+1]
+    x[y], x[y+1] = x[y+1], x[y]
+    swapped = true
+  end
+end
+
+break if not swapped
+end
+
+x 
+end
+
+bubble_sort_array(numbers)

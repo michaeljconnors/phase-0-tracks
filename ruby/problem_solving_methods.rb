@@ -37,7 +37,7 @@ numbers = [24, 37, 12, 100, 35, 1]
 # First come up with your array
 # create a method
 # have the method take your array and go through each array item and categorize them
-# after categorizing them sort and place items in the array in the correct order by swapping them around
+# after categorizing them sort and place items in the array in the correct order by swapping them around if one item is greater than the other
 # then print array
 
 def bubble_sort_array(x)

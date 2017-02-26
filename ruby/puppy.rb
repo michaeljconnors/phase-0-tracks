@@ -17,3 +17,7 @@
 # Stick tounge out
 # Fetch
 # Run
+
+class puppy
+
+end

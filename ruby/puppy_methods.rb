@@ -1,3 +1,4 @@
+#worked with Simon
 class Puppy
   def initialize
       p "Initializing a new puppy instance"

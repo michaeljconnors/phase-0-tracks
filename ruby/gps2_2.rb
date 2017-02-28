@@ -84,7 +84,7 @@ print(list)
 
 # What did you learn about pseudocode from working on this challenge? It's very hard to predict every detail of what you are going to do when phedo coding. But it is super helpful to do it so you can think through the problem.
 # What are the tradeoffs of using arrays and hashes for this challenge? Hashes allowed me to have two subsets of data and connect them to each other with made it great. Arrays would have been a lot more work to produce.
-# What does a method return? What ever code you instruct it to by manipulating hte data.
+# What does a method return? What ever code you instruct it to by manipulating the data and setting a return value.
 # What kind of things can you pass into methods as arguments? If the input is an array or a hash, 
 # How can you pass information between methods? You can nest the methods in between each other so they can operate.
 # What concepts were solidified in this challenge, and what concepts are still confusing? Manipulating hashes were solidified. What confusing is iterating in method for a hash, which I did not end up doing.

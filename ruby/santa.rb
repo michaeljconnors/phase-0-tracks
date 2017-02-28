@@ -1,6 +1,10 @@
 class Santa
 
-def initialize
+def initialize(gender, enthnicity)
+	@gender = gender
+	@enthnicity = enthnicity
+	@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+	@age = 0
 	puts "initializing Santa instance..."
 end
 
@@ -14,5 +18,6 @@ end
 
 end
 
-santa = Santa.new
-santa.eat_milk_and_cookies("chocolate chip")
+
+
+santas = []

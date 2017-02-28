@@ -32,6 +32,7 @@
 # steps: add string, add iteration method
 # output: the fully updated, printable list with updated quanitity in string format.
 
+
 def grocery_list(items)
 	grocery_list = {}
 	items = items.split(" ")
@@ -51,8 +52,32 @@ if qty == "none"
   qty = 1
 end
 new_list[item_name] = qty
-p new_list
+print(new_list)
 end
 
-p grocery_list("carrots apples cereal pizza")
-add_to_list("carrots apples cereal pizza", "grapes", 4)
+def remove_from_list(list, item)
+  list.delete(item)
+  print(list)
+end
+
+def update_quanity(list, item, new_qty)
+p list[item]= [new_qty]
+print(list)
+end
+
+def print(list)
+  p list
+end
+
+list = grocery_list("carrots apples cereal pizza")
+
+add_to_list(list, "Lemonade", 2)
+add_to_list(list, "Tomatoes", 3)
+add_to_list(list, "Onions", 1)
+add_to_list(list, "Ice Cream", 4)
+
+remove_from_list(list, "Lemonade")
+
+update_quanity(list, "Ice Cream", 1)
+
+print(list)

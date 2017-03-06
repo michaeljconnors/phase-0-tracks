@@ -36,7 +36,7 @@ class Game
     p new_word.join(' ')
   end
 
-  def guesses()
+  def guesses
     counter = @secret_word.length
     loop do 
       puts "Player 2: Please submit a letter."
@@ -49,7 +49,7 @@ class Game
       @feedback = feedback(letter)
       puts "You have #{counter} more guesses" 
       break if counter == 0 || @feedback.delete(' ') == @secret_word
-      
+
     end
   end
   

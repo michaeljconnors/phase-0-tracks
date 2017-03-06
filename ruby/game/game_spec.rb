@@ -16,12 +16,13 @@ describe Game do
   let(:game) { Game.new("unicorn") }
 
  it "Gives prompt and shows number of letters to be inputted" do
-    expect(game.initial_feedback).to be == "_  _  _  _  _  _  _"
+    expect(game.initial_feedback).to be == "_ _ _ _ _ _ _"
   end
 
-it "stores the list items given on initialization" do
+  it "stores the list items given on initialization" do
     expect(feedback("u")).to be == "u _ _ _ _ _ _"
   end
+
 end
 
 

@@ -20,7 +20,7 @@ describe Game do
   end
 
 it "stores the list items given on initialization" do
-    expect(game.update_feedback("u")).to be == "u______"
+    expect(feedback("u")).to be == "u _ _ _ _ _ _"
   end
 end
 

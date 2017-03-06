@@ -1,11 +1,16 @@
 # Game Class
+# Game Class
 class Game
 
-	def initialize(word)
-		@secret_word = word
-		@letters_guessed = []
-		@feedback
-	end
+attr_accessor :letter, :secret_word
+
+  def initialize(word)
+    @secret_word = word
+    @letters_guessed = []
+    @feedback
+    @letter
+    @message_counter
+  end
 
   def initial_feedback
     @secret_word.length 
@@ -40,14 +45,15 @@ class Game
     counter = @secret_word.length
     loop do 
       puts "Player 2: Please submit a letter."
-      letter = gets.chomp
-      if @letters_guessed.include? (letter)
+      @letter = gets.chomp
+      if @letters_guessed.include? (@letter)
       else
-        @letters_guessed.delete(letter)
+        @letters_guessed.delete(@letter)
         counter = counter - 1
       end
-      @feedback = feedback(letter)
-      puts "You have #{counter} more guesses" 
+      @feedback = feedback(@letter)
+      @message_counter = "You have #{counter} more guesses"
+      puts @message_counter
       break if counter == 0 || @feedback.delete(' ') == @secret_word
 
     end
@@ -55,9 +61,11 @@ class Game
   
   def final_message
     if @feedback.delete(' ') == @secret_word
-      puts "Congrats! You guess correctly!"
+      message_2 = "Congrats! You guess correctly!"
+      puts message_2
     else
-      puts "Better luck next time..."
+      message_1 = "Better luck next time..."
+      puts message_1
     end
   end
 end
@@ -66,9 +74,9 @@ end
 
 puts"Welcome to the word guessing game!"
 puts "Player 1: please enter your secret word."
+
+#the following is the driver code. Please take out out to run tests. Thnx.
 secret_word = gets.chomp
-
-
 game = Game.new(secret_word)
 game.initial_feedback
 game.guesses

@@ -15,7 +15,7 @@ describe Game do
 
   let(:game) { Game.new("unicorn") }
 
- it "stores the list items given on initialization" do
+ it "Gives prompt and shows number of letters to be inputted" do
     expect(game.initial_feedback).to be == "_  _  _  _  _  _  _"
   end
 

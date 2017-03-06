@@ -19,8 +19,8 @@ describe Game do
     expect(game.initial_feedback).to be == "_ _ _ _ _ _ _"
   end
 
-  it "stores the list items given on initialization" do
-    expect(feedback("u")).to be == "u _ _ _ _ _ _"
+ it "stores the list items given on initialization" do
+    expect(game.feedback("u")).to be == "u _ _ _ _ _ _"
   end
 
 end

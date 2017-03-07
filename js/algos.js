@@ -23,11 +23,6 @@ function longest(array){
 }
 
 
-longest(phrase);
-longest(colors);
-longest(names);
-
-
 
 // function that takes two objects and checks to see if they share one key value
 // input: two objects
@@ -39,15 +34,20 @@ longest(names);
 var eyes = {ed: "blue", becky: "hazel", mari: "brown"};
 var eyes_two = {fred: "red", beth: "blue", mari: "brown"};
 
-console.log(eyes_two.beth);
-console.log(eyes_two);
+function compare(obj, obj_two) {
 
-for (var people in eyes) {
-  var compare = eyes[people] +": "+ people;
-  console.log(compare);
-}
+	for (var people in eyes) {
+		var word = obj_two[people];
+		if (obj_two[people] == eyes[people]){
+			var is_true = true;
+		}else{
+			var is_true = false; }
+		}
+		console.log(is_true);
+	}
 
-for (var people in eyes_two) {
-  var compare = eyes_two[people] +": "+ people;
-  console.log(compare);
-}
+	longest(phrase);
+	longest(colors);
+	longest(names);
+
+	compare(eyes, eyes_two);

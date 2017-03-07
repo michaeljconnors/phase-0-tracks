@@ -16,12 +16,20 @@
 // output: return the word in reverse order
 
 function reverse(str){
-  var reversed_word = "";
-  var word = str;
-for (var i = 0; i < str.length; i++) {
-	reversed_word = word[i] + reversed_word;
-}	
-console.log(reversed_word);
+	var reversed_word = "";
+	var word = str;
+	for (var i = 0; i < str.length; i++) {
+		reversed_word = word[i] + reversed_word;
+	}	
+	return (reversed_word);
 }
 
-reverse("right");
+var number = 1;
+var string = "right";
+var answer = reverse(string);
+
+if (number == 1) {
+	console.log(answer);
+} else {
+	console.log("Your if statement is wrong.");
+}

@@ -15,3 +15,13 @@
 //      assign to a reverse word variable by adding the letters together
 // output: return the word in reverse order
 
+function reverse(str){
+  var reversed_word = "";
+  var word = str;
+for (var i = 0; i < str.length; i++) {
+	reversed_word = word[i] + reversed_word;
+}	
+console.log(reversed_word);
+}
+
+reverse("right");

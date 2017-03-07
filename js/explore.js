@@ -9,7 +9,9 @@
 // method to take string and reverse order
 // input: variable string
 // steps: 
+//    create a variable(reverse word) that = "";
+//    take input and put into string
 //    take string and for each letter 
-//      assign to a new variable by adding the letters together
+//      assign to a reverse word variable by adding the letters together
 // output: return the word in reverse order
 

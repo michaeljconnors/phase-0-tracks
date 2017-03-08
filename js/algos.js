@@ -33,6 +33,7 @@ function longest(array){
 
 var eyes = {ed: "blue", becky: "hazel", mari: "brown"};
 var eyes_two = {fred: "red", beth: "blue", mari: "brown"};
+var eyes_three = {ned: "orange", seth: "black", marci: "green"};
 
 function compare(obj, obj_two) {
 
@@ -64,22 +65,35 @@ function generateWord() {
 	for (var i = 0; i < integer; i++) {
 		var number = Math.floor(Math.random() * 11);
 		var letter = alphabet[number + 3];
-		new_word= new_word + letter;
+		new_word = new_word + letter;
+		
 	}
-	console.log(new_word);
+	return new_word;
 }
 
 function numberOfWords(num) {
 	var integer = num;
+	var words_array = [];
 	for (var i = 0; i < integer; i++) {
 		var word = generateWord();
-
+		words_array.push(word);
 	}
+	return words_array;
 }
 
-numberOfWords(3);
+
 longest(phrase);
 longest(colors);
 longest(names);
 
 compare(eyes, eyes_two);
+compare(eyes, eyes_three);
+
+for (var i = 0; i < 10; i++) {
+	var array = numberOfWords(3);
+	console.log(array);
+	longest(array);
+}
+
+
+

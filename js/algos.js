@@ -7,11 +7,6 @@
 //			run IF statement that sets it as the largest word vairable if greater than the last variable
 // output: returns largest value in array
 
-var phrase = ["long phrase","longest phrase","longer phrase", "oh no you didn't", "the usc trojans"];
-var colors = ["blue", "green", "pink", "orange",];
-var names = ["Ed", "Seabiscuit", "Black Beauty", "Oreo"];
-
-
 function longest(array){
 	var largestWord = "";
 	for (var i = 0; i < array.length; i++) {
@@ -22,17 +17,12 @@ function longest(array){
 	console.log(largestWord);
 }
 
-
-
 // function that takes two objects and checks to see if they share one key value
 // input: two objects
 // steps: loop through one objects keys and values and see if any value is returned
 //    IF the value is greater than 0 then return true
 //       Else return false
-// output: return either true or false
-
-var eyes = {ed: "blue", becky: "hazel", mari: "brown"};
-var eyes_two = {fred: "red", beth: "blue", mari: "brown"};
+// output: return either true or false through console.log
 
 function compare(obj, obj_two) {
 
@@ -46,46 +36,60 @@ function compare(obj, obj_two) {
 		console.log(is_true);
 	}
 
-
-
-
-// function that takes an integer for a length and returns an array of strings of a given length
-// input: integer
-// steps: set up an alphabet variable to select random letters, and a number variable to set up random numbers
-// 			use the For function to loop the number of times the integer specifies 
-//    		create a formula that randomly selects numbers and letters from the above variables
-//       
+// create function that generates a random word with the length of 10 letters max.
+// input: none
+// steps: set up an alphabet variable to select random letters, and a number variable with Math.ceil to select letters at random letters
+// 			FOR LOOP the number of random number of times to select a random letter 
+//    		create a formula that randomly selects numbers and letters from the above variables and adds to new_word variable     
 // output: return the number the number of intigers inputed with 
+//
+// create another function that tell how many times the generate word should run and then add to new array
+// input: integer
+// steps: create an integer and words array variable
+// 			FOR LOOP the number of times of the integer inputed
+//			call the generate word method and put it into a word variable
+//  		PUSH word into array
+// output: return the words array
 
-var alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-var integer = Math.floor(Math.random() * 11);
-
-var new_word = "";
-
-for (var i = 0; i < integer; i++) {
-	var number = Math.floor(Math.random() * 26);
-	var letter = alphabet[number];
-	new_word= new_word + letter;
+function generateWord() {
+	var alphabet = "abcdefghijklmnopqrstuvwxyz";
+	var integer = Math.ceil(Math.random() * 10);
+	var new_word = "";
+	for (var i = 0; i < integer; i++) {
+		var number = Math.floor(Math.random() * 11);
+		var letter = alphabet[number + 3];
+		new_word = new_word + letter;
+		
+	}
+	return new_word;
 }
-console.log(new_word);
 
+function numberOfWords(num) {
+	var integer = num;
+	var words_array = [];
+	for (var i = 0; i < integer; i++) {
+		var word = generateWord();
+		words_array.push(word);
+	}
+	return words_array;
+}
 
+// driver code for all functions
 
+var eyes = {ed: "blue", becky: "hazel", mari: "brown"};
+var eyes_two = {fred: "red", beth: "blue", mari: "brown"};
+var eyes_three = {ned: "orange", seth: "black", marci: "green"};
+var colors = ["blue", "green", "red", "orange",];
 
-
-
-
-
-
-
-
-
-
-
-
-longest(phrase);
 longest(colors);
-longest(names);
-
 compare(eyes, eyes_two);
+compare(eyes, eyes_three);
+
+for (var i = 0; i < 10; i++) {
+	var array = numberOfWords(3);
+	console.log(array);
+	longest(array);
+}
+
+
+

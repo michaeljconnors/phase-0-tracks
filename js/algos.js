@@ -59,14 +59,16 @@ function compare(obj, obj_two) {
 
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-var integer = 3;
+var integer = Math.floor(Math.random() * 11);
+
+var new_word = "";
 
 for (var i = 0; i < integer; i++) {
-  var number = Math.floor(Math.random() * 26);
+	var number = Math.floor(Math.random() * 26);
 	var letter = alphabet[number];
-	random_word= letter;
-	console.log(random_word);
+	new_word= new_word + letter;
 }
+console.log(new_word);
 
 
 
@@ -82,8 +84,8 @@ for (var i = 0; i < integer; i++) {
 
 
 
-	longest(phrase);
-	longest(colors);
-	longest(names);
+longest(phrase);
+longest(colors);
+longest(names);
 
-	compare(eyes, eyes_two);
+compare(eyes, eyes_two);

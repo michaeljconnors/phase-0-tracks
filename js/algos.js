@@ -46,6 +46,42 @@ function compare(obj, obj_two) {
 		console.log(is_true);
 	}
 
+
+
+
+// function that takes an integer for a length and returns an array of strings of a given length
+// input: integer
+// steps: set up an alphabet variable to select random letters, and a number variable to set up random numbers
+// 			use the For function to loop the number of times the integer specifies 
+//    		create a formula that randomly selects numbers and letters from the above variables
+//       
+// output: return the number the number of intigers inputed with 
+
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+var integer = 3;
+
+for (var i = 0; i < integer; i++) {
+  var number = Math.floor(Math.random() * 26);
+	var letter = alphabet[number];
+	random_word= letter;
+	console.log(random_word);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	longest(phrase);
 	longest(colors);
 	longest(names);

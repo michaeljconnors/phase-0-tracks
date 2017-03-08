@@ -57,19 +57,27 @@ function compare(obj, obj_two) {
 //       
 // output: return the number the number of intigers inputed with 
 
+function generateWord() {
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-var integer = Math.floor(Math.random() * 11);
-
+var integer = Math.ceil(Math.random() * 10);
 var new_word = "";
-
 for (var i = 0; i < integer; i++) {
-	var number = Math.floor(Math.random() * 26);
-	var letter = alphabet[number];
+	var number = Math.floor(Math.random() * 11);
+	var letter = alphabet[number + 3];
 	new_word= new_word + letter;
 }
 console.log(new_word);
+}
 
+function numberOfWords(num) {
+var integer = num;
+for (var i = 0; i < integer; i++) {
+var word = generateWord();
+
+}
+}
+
+numberOfWords(3);
 
 
 

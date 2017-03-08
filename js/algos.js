@@ -17,7 +17,7 @@ function longest(array){
 	console.log(largestWord);
 }
 
-// function that takes two objects and checks to see if they share one key value
+// function that takes two objects and checks to see if they share one key or value
 // input: two objects
 // steps: loop through one objects keys and values and see if any value is returned
 //    IF the value is greater than 0 then return true

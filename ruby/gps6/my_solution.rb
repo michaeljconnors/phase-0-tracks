@@ -101,3 +101,14 @@ end
 
 #=======================================================================
 # Reflection Section
+# The two differences is one key is a symbol whereas the other has a string. This allows the computer to process easily information.
+# Require relative allows the program to access data in a local file, where as require gets other code from other areas outside a local source.
+# One way is to go through each key and value and apply a method to it. Another way would be to go through each key and value and apply a formula to the values.
+# What stood out to me was the reduntancy and patterns, in which after identifying we were able to simplify taking out the fluff.
+# I would say refactoring, reading other code, and even iteration solidified for me.
+
+
+
+
+
+

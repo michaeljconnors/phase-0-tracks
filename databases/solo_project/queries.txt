@@ -54,3 +54,20 @@ sqlite> SELECT * FROM Purchase_Orders;
 3|bookmarks|300|false|2
 6|lanyards|150|false|2
 sqlite> 
+
+RELEASE 2 (different 'Joins')
+
+
+sqlite> SELECT Purchase_Orders.product_name, Purchase_Orders.units, client.client_name From Purchase_Orders LEFT JOIN client ON Purchase_Orders.client_id=client.id;
+workbooks|375|Amazon
+workbooks|675|Apple
+bookmarks|300|Amazon
+lanyards|150|Amazon
+
+
+sqlite> SELECT Purchase_Orders.product_name, client.client_name From Purchase_Orders INNER JOIN client ON Purchase_Orders.client_id=client.id;
+workbooks|Amazon
+workbooks|Apple
+bookmarks|Amazon
+lanyards|Amazon
+

@@ -1,0 +1,73 @@
+RELEASE 1
+
+1. Display the information in one table (either table is fine).
+
+sqlite> SELECT * FROM Purchase_Orders;
+1|workbooks|375|false|2
+2|workbooks|675|false|1
+3|bookmarks|500|false|2
+5|lanyards|500|true|1
+6|lanyards|150|false|2
+
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> UPDATE Purchase_Orders
+   ...> SET units = 300
+   ...> WHERE product_name = 'bookmarks';
+sqlite> SELECT * FROM Purchase_Orders;
+1|workbooks|375|false|2
+2|workbooks|675|false|1
+3|bookmarks|300|false|2
+5|lanyards|500|true|1
+6|lanyards|150|false|2
+sqlite> 
+
+
+3. Display the information in both tables using one query.
+
+FROM Purchase_Orders, client WHERE Purchase_Orders.client_id = client.id;
+1|workbooks|375|false|2|2|Amazon
+2|workbooks|675|false|1|1|Apple
+3|bookmarks|300|false|2|2|Amazon
+5|lanyards|500|true|1|1|Apple
+6|lanyards|150|false|2|2|Amazon
+
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) 
+from both tables using one query.
+
+sqlite> SELECT product_name, units, client_name FROM Purchase_Orders, client WHERE Purchase_Orders.client_id = client.id;
+workbooks|375|Amazon
+workbooks|675|Apple
+bookmarks|300|Amazon
+lanyards|500|Apple
+lanyards|150|Amazon
+
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+sqlite> DELETE FROM Purchase_Orders WHERE ship_overnight="true";
+sqlite> SELECT * FROM Purchase_Orders;
+1|workbooks|375|false|2
+2|workbooks|675|false|1
+3|bookmarks|300|false|2
+6|lanyards|150|false|2
+sqlite> 
+
+RELEASE 2 (different 'Joins')
+
+
+sqlite> SELECT Purchase_Orders.product_name, Purchase_Orders.units, client.client_name From Purchase_Orders LEFT JOIN client ON Purchase_Orders.client_id=client.id;
+workbooks|375|Amazon
+workbooks|675|Apple
+bookmarks|300|Amazon
+lanyards|150|Amazon
+
+
+sqlite> SELECT Purchase_Orders.product_name, client.client_name From Purchase_Orders INNER JOIN client ON Purchase_Orders.client_id=client.id;
+workbooks|Amazon
+workbooks|Apple
+bookmarks|Amazon
+lanyards|Amazon
+

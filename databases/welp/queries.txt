@@ -4,3 +4,10 @@ Grundy Hollow Wedding Chapel|5|Amir|Shogun
 Amir's Towing|2|Amir|Shogun
 Grundy Hollow Wedding Chapel|1|Harry|Potter
 Beagul Night Club|3|Bob|Builder
+
+sqlite> SELECT businesses.Name, reviews.stars, reviews.comment, users.first_name, users.last_name FROM reviews INNER JOIN users ON reviews.user_id=users.id INNER JOIN businesses ON reviews.business_
+Amir's Towing|3|Good Food! Poor service.|Bob|Marley
+Grundy Hollow Wedding Chapel|5|Jolley good|Amir|Shogun
+Amir's Towing|2|Bad service|Amir|Shogun
+Grundy Hollow Wedding Chapel|1|Pretty sure the server is a death eater|Harry|Potter
+Beagul Night Club|3|not bad|Bob|Builder

@@ -1,0 +1,22 @@
+Release 2
+
+3.sqlite> SELECT businesses.Name, reviews.stars, users.first_name, users.last_name FROM reviews INNER JOIN users ON reviews.user_id=users.id INNER JOIN businesses ON reviews.business_id=businesse
+
+Amir's Towing|3|Bob|Marley
+Grundy Hollow Wedding Chapel|5|Amir|Shogun
+Amir's Towing|2|Amir|Shogun
+Grundy Hollow Wedding Chapel|1|Harry|Potter
+Beagul Night Club|3|Bob|Builder
+
+4.sqlite> SELECT businesses.Name, reviews.stars, reviews.comment, users.first_name, users.last_name FROM reviews INNER JOIN users ON reviews.user_id=users.id INNER JOIN businesses ON reviews.business_
+
+Amir's Towing|3|Good Food! Poor service.|Bob|Marley
+Grundy Hollow Wedding Chapel|5|Jolley good|Amir|Shogun
+Amir's Towing|2|Bad service|Amir|Shogun
+Grundy Hollow Wedding Chapel|1|Pretty sure the server is a death eater|Harry|Potter
+Beagul Night Club|3|not bad|Bob|Builder
+
+5.sqlite> SELECT * FROM reviews LEFT JOIN users ON reviews.user_id=users.id INNER JOIN businesses ON reviews.business_id=businesses.id WHERE businesses.Name = "Grundy Hollow Wedding Chapel"; 
+
+2|5|Jolley good|1|2|2|Amir|Shogun|1|Grundy Hollow Wedding Chapel
+4|1|Pretty sure the server is a death eater|1|5|5|Harry|Potter|1|Grundy Hollow Wedding Chapel

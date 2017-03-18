@@ -30,7 +30,8 @@ id INTEGER PRIMARY KEY,
 address VARCHAR(255),
 price INT,
 years_of_mortgage INT,
-interest_rate REAL
+interest_rate REAL,
+monthly_pmt INT
 )
 SQL
 
@@ -40,8 +41,6 @@ review_cmd = <<-SQL
 CREATE TABLE IF NOT EXISTS review(
 id INTEGER PRIMARY KEY,
 banker_name VARCHAR(255),
-qualify BOOLEAN,
-monthly_pmt INT,
 potential_id INT,
 house_info_id INT,
 FOREIGN KEY (potential_id) REFERENCES potential_home_buyer(id),
@@ -63,7 +62,7 @@ db.execute(review_cmd)
 # output: updated table
 
 def create_potential_home_buyer(db, name, age, job_title, salary)
-  db.execute("INSERT INTO potential_home_buyer (name, age, job_title, salary) VALUES (?, ?, ?, ?)", [name, age, job_title, salary])
+	db.execute("INSERT INTO potential_home_buyer (name, age, job_title, salary) VALUES (?, ?, ?, ?)", [name, age, job_title, salary])
 end
 
 # method that adds data to house_info table
@@ -72,8 +71,18 @@ end
    # insert data
 # output: updated table
 
-def create_house_info(db, address, price, years_of_mortgage, interest_rate)
-  db.execute("INSERT INTO house_info (address, price, years_of_mortgage, interest_rate) VALUES (?, ?, ?, ?)", [address, price, years_of_mortgage, interest_rate])
+def create_house_info(db, address, price, years_of_mortgage, interest_rate, monthly_pmt)
+	db.execute("INSERT INTO house_info (address, price, years_of_mortgage, interest_rate, monthly_pmt) VALUES (?, ?, ?, ?, ?)", [address, price, years_of_mortgage, interest_rate, monthly_pmt])
+end
+
+# method that reviews home loan info
+# input: banker_name, qualify, monthly_pmt, potential_id, house_info_id
+# steps:
+   # insert data
+# output: updated table
+
+def create_review(db, banker_name, monthly_pmt, potential_id, house_info_id)
+	db.execute("INSERT INTO review (banker_name, monthly_pmt, potential_id, house_info_id) VALUES (?, ?, ?, ?)", [banker_name, monthly_pmt, potential_id, house_info_id])
 end
 
 # method that calculates monthly mortgage
@@ -112,6 +121,7 @@ def test_if_qualify(current_salary, monthly_payment)
 	end
 end
 
+#DRIVER CODE
 
 #puts "What is applicant's name?"
 
@@ -132,15 +142,15 @@ end
 #create_potential_home_buyer(db, applicant_name, applicant_age, applicant_job_title, applicant_salary)
 
 100.times do 
-random_number = Random.new
-age = random_number.rand(23...42)
-salary = 150000
-create_potential_home_buyer(db, "frank", age , "director", 190000)
-salary += 1000
+	random_number = Random.new
+	age = random_number.rand(23...42)
+	salary = 150000
+	create_potential_home_buyer(db, "frank", age , "director", salary)
+	salary += 1000
 end
 
 
-puts buyer = db.execute("SELECT * FROM potential_home_buyer")
+puts db.execute("SELECT * FROM potential_home_buyer")
 
 #puts "What is the house target house address?"
 
@@ -159,7 +169,42 @@ puts buyer = db.execute("SELECT * FROM potential_home_buyer")
 #target_interest_rate = gets.chomp
 
 #create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
-puts house = db.execute("SELECT * FROM house_info")
+
+target_price = 200000
+target_years_of_mortgage = 15
+target_interest_rate = 0.035
+100.times do
+	target_monthly_pmt = calculate_monthly_mortgage(target_interest_rate, target_price, target_years_of_mortgage)
+	random_number = Random.new
+	target_years_of_mortgage = random_number.rand(15...30)
+	address = target_years_of_mortgage + 1000
+	create_house_info(db, "off #{address} West", target_price, target_years_of_mortgage, target_interest_rate, target_monthly_pmt)
+	target_price = target_price + 5000
+end
+
+puts db.execute("SELECT * FROM house_info")
+
+#puts "What is the bankers name?"
+
+#target_address = gets.chomp
+
+#puts "Does the home buyer qualify?"
+
+#target_price = gets.chomp
+
+#puts "How many years is the buyer willing to have a mortgage?"
+
+#target_years_of_mortgage = gets.chomp
+
+#puts "What is the interest rate?"
+
+#target_interest_rate = gets.chomp
+
+#create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
+
+
+#create_review(db, banker_name, monthly_pmt, potential_id, house_info_id)
+
 
 applicant_rate = ".05"
 applicant_principal = 200000

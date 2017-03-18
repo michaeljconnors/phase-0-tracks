@@ -17,7 +17,7 @@ id INTEGER PRIMARY KEY,
 name VARCHAR(255),
 age INT,
 job_title VARCHAR(255),
-salary INT
+salary INT 
 )
 SQL
 
@@ -29,7 +29,7 @@ id INTEGER PRIMARY KEY,
 address VARCHAR(255),
 price INT,
 years_of_mortgage INT,
-interest_rate REAL
+interest_rate INT
 )
 SQL
 
@@ -42,7 +42,7 @@ banker_name VARCHAR(255),
 qualify BOOLEAN,
 monthly_pmt INT,
 potential_id INT,
-house_info_id INT,
+house_info_id REAL,
 FOREIGN KEY (potential_id) REFERENCES potential_home_buyer(id),
 FOREIGN KEY (house_info_id) REFERENCES house_info(id)
 )
@@ -62,9 +62,18 @@ db.execute(review_cmd)
 # output: updated table
 
 def create_potential_home_buyer(db, name, age, job_title, salary)
-  db.execute("INSERT INTO kittens (name, age, job_title, salary) VALUES (?, ?, ?, ?)", [name, age, job_title, salary])
+  db.execute("INSERT INTO potential_home_buyer (name, age, job_title, salary) VALUES (?, ?, ?, ?)", [name, age, job_title, salary])
 end
 
+# method that adds data to house_info table
+# input: address, price, years_of_mortgage, interst_rate
+# steps:
+   # insert data
+# output: updated table
+
+def create_house_info(db, address, price, years_of_mortgage, interest_rate)
+  db.execute("INSERT INTO house_info (address, price, years_of_mortgage, interest_rate) VALUES (?, ?, ?, ?)", [address, price, years_of_mortgage, interest_rate])
+end
 
 # method that calculates monthly mortgage
 # input: rate, principal, years
@@ -103,25 +112,51 @@ def test_if_qualify(current_salary, monthly_payment)
 end
 
 
-# driver
+#puts "What is applicant's name?"
 
-puts "What is your name?"
+#applicatnt_name = gets.chomp
+applicatnt_name = "Bryan"
 
-applicatnt_name = gets.chomp
+#puts "What is applicant's age?"
 
-puts "What is your age?"
+#applicatnt_age = gets.chomp
+applicatnt_age = 34
 
-applicatnt_age = gets.chomp
+#puts "What is applicant's job title?"
 
-puts "What is your job title?"
+#applicatnt_job_title = gets.chomp
+applicatnt_job_title = "financial analyst"
 
-applicatnt_job_title = gets.chomp
+#puts "What is applicant's salary?"
 
-puts "What is your salary?"
-
-applicatnt_salary = gets.chomp
+#applicatnt_salary = gets.chomp
+applicatnt_salary = 90000
 
 create_potential_home_buyer(db, applicatnt_name, applicatnt_age, applicatnt_job_title, applicatnt_salary)
+puts buyer = db.execute("SELECT * FROM potential_home_buyer")
+
+#puts "What is the house target house address?"
+
+#target_address = gets.chomp
+target_address = "2736 yestserday drive"
+
+#puts "What is the house target house price?"
+
+#target_price = gets.chomp
+target_price = 450000
+
+#puts "How many years is the buyer willing to have a mortgage?"
+
+#target_years_of_mortgage = gets.chomp
+target_years_of_mortgage = 15
+
+#puts "What is the interest rate?"
+
+#target_interest_rate = gets.chomp
+target_interest_rate = 0.034
+
+create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
+puts house = db.execute("SELECT * FROM house_info")
 
 applicant_rate = ".05"
 applicant_principal = 200000
@@ -134,5 +169,6 @@ qualify = test_if_qualify(current_salary, projected_monthly_payment)
 
 puts projected_monthly_payment
 puts qualify
+
 
 

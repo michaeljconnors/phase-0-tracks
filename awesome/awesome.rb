@@ -168,9 +168,9 @@ end
 #house_info_id = 3
 
 50.times do
-random_number = Random.new
-number = random_number.rand(15...30)
-puts create_review(db, Faker::Name.name, number, number)
+	random_number = Random.new
+	number = random_number.rand(15...30)
+	puts create_review(db, Faker::Name.name, number, number)
 end
 
 # Join tables and execute command line
@@ -179,22 +179,94 @@ end
 
 all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON review.potential_id=potential_home_buyer.id INNER JOIN house_info ON review.house_info_id=house_info.id;")
 
+# Prompt user what action they would like to take
 # ITERATE through all data and print out banker name, name of potential buyer, and the status of the review
   # IF test_quality method is true then print accepted in statement
   # IF test quality method is false then print rejected
 
-all_data.each do |all_data|
-	tester = test_if_qualify("#{all_data['salary']}".to_i, "#{all_data['monthly_pmt']}".to_i)
-	if tester == true
-		status = "accepted"
-	else tester == false
-		status = "rejected"
-	end
-puts "#{all_data['banker_name']} counducted the mortgage review for #{all_data['name']}."
-puts "#{all_data['name']}'s loan was #{status} for #{all_data['address']}."
-end
+
+  loop do
+  	puts "Please type in the following on the right, for the desired action on the left:"
+  	puts "view - view listed summary"
+  	puts "all - view all data"
+  	puts "input - create data"
+  	puts "manipulate - change data"
+
+  	input = gets.chomp
+
+  	if input == "view"
+
+  		all_data.each do |all_data|
+  			tester = test_if_qualify("#{all_data['salary']}".to_i, "#{all_data['monthly_pmt']}".to_i)
+  			if tester == true
+  				status = "accepted"
+  			else tester == false
+  				status = "rejected"
+  			end
+  			puts "#{all_data['banker_name']} counducted the mortgage review for #{all_data['name']}."
+  			puts "#{all_data['name']}'s loan was #{status} for #{all_data['address']}."
+  		end
+
+  	elsif input == "all"
+  		puts all_data
+
+  	else input == "input"
 
 
+
+  		puts "What is applicant's name?"
+
+  		applicant_name = gets.chomp
+
+  		puts "What is applicant's age?"
+
+  		applicant_age = gets.chomp
+
+  		puts "What is applicant's job title?"
+
+  		applicant_job_title = gets.chomp
+
+  		puts "What is applicant's salary?"
+
+  		applicant_salary = gets.chomp
+
+  		create_potential_home_buyer(db, applicant_name, applicant_age, applicant_job_title, applicant_salary)
+
+  		puts "What is the house target house address?"
+
+  		target_address = gets.chomp
+
+  		puts "What is the house target house price?"
+
+  		target_price = gets.chomp
+
+  		puts "How many years is the buyer willing to have a mortgage?"
+
+  		target_years_of_mortgage = gets.chomp
+
+  		puts "What is the interest rate?"
+
+  		target_interest_rate = gets.chomp
+
+  		create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
+
+  		puts "What is the bankers name?"
+
+  		banker_name = gets.chomp
+
+  		puts "What is the ID of the potential buyer?"
+
+  		potential_id = gets.chomp
+
+  		puts "What is the ID of the potential house?"
+
+  		house_info_id = gets.chomp
+
+  		create_review(db, banker_name, potential_id, house_info_id)
+  	end
+  	break if input = "exit"
+  	puts "Have a great day!"
+  end
 
 
 
@@ -212,69 +284,3 @@ end
 
 #puts projected_monthly_payment
 #puts qualify
-
-
-
-
-
-
-
-
-#Prompts to create data
-
-#puts "What is applicant's name?"
-
-#applicant_name = gets.chomp
-
-#puts "What is applicant's age?"
-
-#applicant_age = gets.chomp
-
-#puts "What is applicant's job title?"
-
-#applicant_job_title = gets.chomp
-
-#puts "What is applicant's salary?"
-
-#applicant_salary = gets.chomp
-
-#create_potential_home_buyer(db, applicant_name, applicant_age, applicant_job_title, applicant_salary)
-
-
-###########################
-
-
-#puts "What is the house target house address?"
-
-#target_address = gets.chomp
-
-#puts "What is the house target house price?"
-
-#target_price = gets.chomp
-
-#puts "How many years is the buyer willing to have a mortgage?"
-
-#target_years_of_mortgage = gets.chomp
-
-#puts "What is the interest rate?"
-
-#target_interest_rate = gets.chomp
-
-#create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
-
-############################
-
-#puts "What is the bankers name?"
-
-#banker_name = gets.chomp
-
-#puts "What is the ID of the potential buyer?"
-
-#potential_id = gets.chomp
-
-#puts "What is the ID of the potential house?"
-
-#house_info_id = gets.chomp
-
-#create_review(db, banker_name, potential_id, house_info_id)
-

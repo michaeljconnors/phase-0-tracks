@@ -82,8 +82,8 @@ end
    # insert data
 # output: updated table
 
-def create_review(db, banker_name, monthly_pmt, potential_id, house_info_id)
-	db.execute("INSERT INTO review (banker_name, monthly_pmt, potential_id, house_info_id) VALUES (?, ?, ?, ?)", [banker_name, monthly_pmt, potential_id, house_info_id])
+def create_review(db, banker_name, potential_id, house_info_id)
+	db.execute("INSERT INTO review (banker_name, potential_id, house_info_id) VALUES (?, ?, ?)", [banker_name, potential_id, house_info_id])
 end
 
 # method that calculates monthly mortgage
@@ -134,7 +134,7 @@ salary = 150000
 end
 
 
-puts db.execute("SELECT * FROM potential_home_buyer")
+#puts db.execute("SELECT * FROM potential_home_buyer")
 
 
 
@@ -150,24 +150,31 @@ target_interest_rate = 0.035
 	target_price = target_price + 5000
 end
 
-puts db.execute("SELECT * FROM house_info")
+#puts db.execute("SELECT * FROM house_info")
 
 #puts "What is the bankers name?"
 
-#banker_name = gets.chomp
+banker_name = "rob"
 
 #puts "What is the ID of the potential buyer?"
 
-#potential_id = gets.chomp
+potential_id = 2
 
 #puts "What is the ID of the potential house?"
 
-#house_info_id = gets.chomp
+house_info_id = 3
+
+50.times do
+random_number = Random.new
+number = random_number.rand(15...30)
+puts create_review(db, Faker::Name.name, number, number)
+end
 
 
+#puts db.execute("SELECT * FROM review")
 
+puts db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON review.potential_id=potential_home_buyer.id INNER JOIN house_info ON review.house_info_id=house_info.id;")
 
-#create_review(db, banker_name, potential_id, house_info_id)
 
 
 applicant_rate = ".05"
@@ -189,7 +196,7 @@ puts qualify
 
 
 
-#ANOTHER ROUTE
+#Prompts to create data
 
 #puts "What is applicant's name?"
 
@@ -244,4 +251,6 @@ puts qualify
 #puts "What is the ID of the potential house?"
 
 #house_info_id = gets.chomp
+
+#create_review(db, banker_name, potential_id, house_info_id)
 

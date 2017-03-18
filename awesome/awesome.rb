@@ -114,12 +114,12 @@ end
 def test_if_qualify(current_salary, monthly_payment)
 	monthly_salary = current_salary / 12
 	times_greater = monthly_salary / monthly_payment
-	puts monthly_salary
 	if times_greater >= 2 
-		true 
+		answer = true 
 	else
-		false 
+		answer = false 
 	end
+	return answer
 end
 
 #DRIVER CODE
@@ -130,7 +130,8 @@ salary = 150000
 	random_number = Random.new
 	age = random_number.rand(23...42)
 	create_potential_home_buyer(db, Faker::Name.name, age , "director", salary)
-	salary = salary+ 1000
+	random_number = Random.new
+	salary = random_number.rand(0...90000)
 end
 
 
@@ -138,16 +139,18 @@ end
 
 
 
-target_price = 200000
-target_years_of_mortgage = 15
-target_interest_rate = 0.035
+
+
 100.times do
-	target_monthly_pmt = calculate_monthly_mortgage(target_interest_rate, target_price, target_years_of_mortgage)
 	random_number = Random.new
 	target_years_of_mortgage = random_number.rand(15...30)
-	address = target_years_of_mortgage + 1000
-	create_house_info(db, "off #{address} West", target_price, target_years_of_mortgage, target_interest_rate, target_monthly_pmt)
-	target_price = target_price + 5000
+	target_interest_rate = 0.035
+	random_number = Random.new
+	target_price = random_number.rand(0...700000)
+	target_monthly_pmt = calculate_monthly_mortgage(target_interest_rate, target_price, target_years_of_mortgage)
+	random_number = Random.new
+	address = random_number.rand(0...2000)
+	create_house_info(db, "#{address} Austin", target_price, target_years_of_mortgage, target_interest_rate, target_monthly_pmt)
 end
 
 #puts db.execute("SELECT * FROM house_info")
@@ -170,24 +173,45 @@ number = random_number.rand(15...30)
 puts create_review(db, Faker::Name.name, number, number)
 end
 
+# Join tables and execute command line
 
 #puts db.execute("SELECT * FROM review")
 
-puts db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON review.potential_id=potential_home_buyer.id INNER JOIN house_info ON review.house_info_id=house_info.id;")
+all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON review.potential_id=potential_home_buyer.id INNER JOIN house_info ON review.house_info_id=house_info.id;")
+
+# ITERATE through all data and print out banker name, name of potential buyer, and the status of the review
+  # IF test_quality method is true then print accepted in statement
+  # IF test quality method is false then print rejected
+
+all_data.each do |all_data|
+	tester = test_if_qualify("#{all_data['salary']}".to_i, "#{all_data['monthly_pmt']}".to_i)
+	if tester == true
+		status = "accepted"
+	else tester == false
+		status = "rejected"
+	end
+puts "#{all_data['banker_name']} counducted the mortgage review for #{all_data['name']}."
+puts "#{all_data['name']}'s loan was #{status} for #{all_data['address']}."
+end
 
 
 
-applicant_rate = ".05"
-applicant_principal = 200000
-applicant_years = 15
-current_salary = 37000
 
-projected_monthly_payment = calculate_monthly_mortgage(applicant_rate, applicant_principal, applicant_years)
 
-qualify = test_if_qualify(current_salary, projected_monthly_payment)
 
-puts projected_monthly_payment
-puts qualify
+
+# OLD DRIVER CODE
+#applicant_rate = ".05"
+#applicant_principal = 200000
+#applicant_years = 15
+#current_salary = 37000
+
+#projected_monthly_payment = calculate_monthly_mortgage(applicant_rate, applicant_principal, applicant_years)
+
+#qualify = test_if_qualify(current_salary, projected_monthly_payment)
+
+#puts projected_monthly_payment
+#puts qualify
 
 
 

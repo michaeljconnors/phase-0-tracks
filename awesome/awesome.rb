@@ -157,15 +157,15 @@ end
 
 #puts "What is the bankers name?"
 
-banker_name = "rob"
+#banker_name = "rob"
 
 #puts "What is the ID of the potential buyer?"
 
-potential_id = 2
+#potential_id = 2
 
 #puts "What is the ID of the potential house?"
 
-house_info_id = 3
+#house_info_id = 3
 
 50.times do
 random_number = Random.new

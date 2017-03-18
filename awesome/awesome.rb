@@ -9,6 +9,7 @@ require 'faker'
 # create SQLite3 database
 
 db = SQLite3::Database.new("applicant_data.db")
+db.results_as_hash = true
 
 # create delimiter that lays the frame work for a potential_home_buyer
 
@@ -123,6 +124,73 @@ end
 
 #DRIVER CODE
 
+
+salary = 150000
+100.times do 
+	random_number = Random.new
+	age = random_number.rand(23...42)
+	create_potential_home_buyer(db, Faker::Name.name, age , "director", salary)
+	salary = salary+ 1000
+end
+
+
+puts db.execute("SELECT * FROM potential_home_buyer")
+
+
+
+target_price = 200000
+target_years_of_mortgage = 15
+target_interest_rate = 0.035
+100.times do
+	target_monthly_pmt = calculate_monthly_mortgage(target_interest_rate, target_price, target_years_of_mortgage)
+	random_number = Random.new
+	target_years_of_mortgage = random_number.rand(15...30)
+	address = target_years_of_mortgage + 1000
+	create_house_info(db, "off #{address} West", target_price, target_years_of_mortgage, target_interest_rate, target_monthly_pmt)
+	target_price = target_price + 5000
+end
+
+puts db.execute("SELECT * FROM house_info")
+
+#puts "What is the bankers name?"
+
+#banker_name = gets.chomp
+
+#puts "What is the ID of the potential buyer?"
+
+#potential_id = gets.chomp
+
+#puts "What is the ID of the potential house?"
+
+#house_info_id = gets.chomp
+
+
+
+
+#create_review(db, banker_name, potential_id, house_info_id)
+
+
+applicant_rate = ".05"
+applicant_principal = 200000
+applicant_years = 15
+current_salary = 37000
+
+projected_monthly_payment = calculate_monthly_mortgage(applicant_rate, applicant_principal, applicant_years)
+
+qualify = test_if_qualify(current_salary, projected_monthly_payment)
+
+puts projected_monthly_payment
+puts qualify
+
+
+
+
+
+
+
+
+#ANOTHER ROUTE
+
 #puts "What is applicant's name?"
 
 #applicant_name = gets.chomp
@@ -141,16 +209,9 @@ end
 
 #create_potential_home_buyer(db, applicant_name, applicant_age, applicant_job_title, applicant_salary)
 
-100.times do 
-	random_number = Random.new
-	age = random_number.rand(23...42)
-	salary = 150000
-	create_potential_home_buyer(db, "frank", age , "director", salary)
-	salary += 1000
-end
 
+###########################
 
-puts db.execute("SELECT * FROM potential_home_buyer")
 
 #puts "What is the house target house address?"
 
@@ -170,53 +231,17 @@ puts db.execute("SELECT * FROM potential_home_buyer")
 
 #create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
 
-target_price = 200000
-target_years_of_mortgage = 15
-target_interest_rate = 0.035
-100.times do
-	target_monthly_pmt = calculate_monthly_mortgage(target_interest_rate, target_price, target_years_of_mortgage)
-	random_number = Random.new
-	target_years_of_mortgage = random_number.rand(15...30)
-	address = target_years_of_mortgage + 1000
-	create_house_info(db, "off #{address} West", target_price, target_years_of_mortgage, target_interest_rate, target_monthly_pmt)
-	target_price = target_price + 5000
-end
-
-puts db.execute("SELECT * FROM house_info")
+############################
 
 #puts "What is the bankers name?"
 
-#target_address = gets.chomp
+#banker_name = gets.chomp
 
-#puts "Does the home buyer qualify?"
+#puts "What is the ID of the potential buyer?"
 
-#target_price = gets.chomp
+#potential_id = gets.chomp
 
-#puts "How many years is the buyer willing to have a mortgage?"
+#puts "What is the ID of the potential house?"
 
-#target_years_of_mortgage = gets.chomp
-
-#puts "What is the interest rate?"
-
-#target_interest_rate = gets.chomp
-
-#create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
-
-
-#create_review(db, banker_name, monthly_pmt, potential_id, house_info_id)
-
-
-applicant_rate = ".05"
-applicant_principal = 200000
-applicant_years = 15
-current_salary = 37000
-
-projected_monthly_payment = calculate_monthly_mortgage(applicant_rate, applicant_principal, applicant_years)
-
-qualify = test_if_qualify(current_salary, projected_monthly_payment)
-
-puts projected_monthly_payment
-puts qualify
-
-
+#house_info_id = gets.chomp
 

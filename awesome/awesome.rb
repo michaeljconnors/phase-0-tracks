@@ -4,6 +4,7 @@
 # require gems
 
 require 'sqlite3'
+require 'faker'
 
 # create SQLite3 database
 
@@ -29,7 +30,7 @@ id INTEGER PRIMARY KEY,
 address VARCHAR(255),
 price INT,
 years_of_mortgage INT,
-interest_rate INT
+interest_rate REAL
 )
 SQL
 
@@ -42,7 +43,7 @@ banker_name VARCHAR(255),
 qualify BOOLEAN,
 monthly_pmt INT,
 potential_id INT,
-house_info_id REAL,
+house_info_id INT,
 FOREIGN KEY (potential_id) REFERENCES potential_home_buyer(id),
 FOREIGN KEY (house_info_id) REFERENCES house_info(id)
 )
@@ -114,48 +115,50 @@ end
 
 #puts "What is applicant's name?"
 
-#applicatnt_name = gets.chomp
-applicatnt_name = "Bryan"
+#applicant_name = gets.chomp
 
 #puts "What is applicant's age?"
 
-#applicatnt_age = gets.chomp
-applicatnt_age = 34
+#applicant_age = gets.chomp
 
 #puts "What is applicant's job title?"
 
-#applicatnt_job_title = gets.chomp
-applicatnt_job_title = "financial analyst"
+#applicant_job_title = gets.chomp
 
 #puts "What is applicant's salary?"
 
-#applicatnt_salary = gets.chomp
-applicatnt_salary = 90000
+#applicant_salary = gets.chomp
 
-create_potential_home_buyer(db, applicatnt_name, applicatnt_age, applicatnt_job_title, applicatnt_salary)
+#create_potential_home_buyer(db, applicant_name, applicant_age, applicant_job_title, applicant_salary)
+
+100.times do 
+random_number = Random.new
+age = random_number.rand(23...42)
+salary = 150000
+create_potential_home_buyer(db, "frank", age , "director", 190000)
+salary += 1000
+end
+
+
 puts buyer = db.execute("SELECT * FROM potential_home_buyer")
 
 #puts "What is the house target house address?"
 
 #target_address = gets.chomp
-target_address = "2736 yestserday drive"
 
 #puts "What is the house target house price?"
 
 #target_price = gets.chomp
-target_price = 450000
 
 #puts "How many years is the buyer willing to have a mortgage?"
 
 #target_years_of_mortgage = gets.chomp
-target_years_of_mortgage = 15
 
 #puts "What is the interest rate?"
 
 #target_interest_rate = gets.chomp
-target_interest_rate = 0.034
 
-create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
+#create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
 puts house = db.execute("SELECT * FROM house_info")
 
 applicant_rate = ".05"

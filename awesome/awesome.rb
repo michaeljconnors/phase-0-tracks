@@ -191,6 +191,7 @@ all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON re
   	puts "all - view all data"
   	puts "input - create data"
   	puts "manipulate - change data"
+  	puts "When finished type 'done'."
 
   	input = gets.chomp
 
@@ -210,9 +211,7 @@ all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON re
   	elsif input == "all"
   		puts all_data
 
-  	else input == "input"
-
-
+  	elsif input == "input"
 
   		puts "What is applicant's name?"
 
@@ -248,7 +247,9 @@ all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON re
 
   		target_interest_rate = gets.chomp
 
-  		create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate)
+  		target_monthly_pmt = calculate_monthly_mortgage(target_interest_rate.to_f, target_price.to_i, target_years_of_mortgage.to_i)
+
+  		create_house_info(db, target_address, target_price, target_years_of_mortgage, target_interest_rate, target_monthly_pmt)
 
   		puts "What is the bankers name?"
 
@@ -263,9 +264,17 @@ all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON re
   		house_info_id = gets.chomp
 
   		create_review(db, banker_name, potential_id, house_info_id)
+
+  		puts all_data
+
+  	elsif input == "manipulate"
+  		puts "manipulated"
+
+  	else input == "done"
+  		puts "thank you"
+
   	end
-  	break if input = "exit"
-  	puts "Have a great day!"
+  	break if input == "done"
   end
 
 

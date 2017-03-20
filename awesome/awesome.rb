@@ -175,30 +175,27 @@ end
 
 # Join tables and execute command line
 
-#puts db.execute("SELECT * FROM review")
-
 all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON review.potential_id=potential_home_buyer.id INNER JOIN house_info ON review.house_info_id=house_info.id;")
 
 # Prompt user what action they would like to take
-# ITERATE through all data and print out banker name, name of potential buyer, and the status of the review
-  # IF test_quality method is true then print accepted in statement
-  # IF test quality method is false then print rejected
-
 
   loop do
   	puts "Please type in the following on the right, for the desired action on the left:"
   	puts "view - view listed summary"
   	puts "all - view all data"
   	puts "input - create data"
-  	puts "manipulate - change data"
   	puts "When finished type 'done'."
 
   	input = gets.chomp
 
+# ITERATE through all data and print out banker name, name of potential buyer, and the status of the review
+  # IF test_quality method is true then print accepted in statement
+  # IF test quality method is false then print rejected
+
   	if input == "view"
 
   		all_data.each do |all_data|
-  			tester = test_if_qualify("#{all_data['salary']}".to_i, "#{all_data['monthly_pmt']}".to_i)
+			tester = test_if_qualify("#{all_data['salary']}".to_i, "#{all_data['monthly_pmt']}".to_i)
   			if tester == true
   				status = "accepted"
   			else tester == false
@@ -211,6 +208,9 @@ all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON re
   	elsif input == "all"
   		puts all_data
 
+
+# Have option to input data, with prompts helping throughout the way.
+# upate the all data table view
   	elsif input == "input"
 
   		puts "What is applicant's name?"
@@ -255,20 +255,19 @@ all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON re
 
   		banker_name = gets.chomp
 
-  		puts "What is the ID of the potential buyer?"
+  		puts "What is the ID of the potential buyer? (start with 101)"
 
   		potential_id = gets.chomp
 
-  		puts "What is the ID of the potential house?"
+  		puts "What is the ID of the potential house? (start with 101)"
 
   		house_info_id = gets.chomp
 
   		create_review(db, banker_name, potential_id, house_info_id)
 
-  		puts all_data
+  		all_data = db.execute("SELECT * FROM review LEFT JOIN potential_home_buyer ON review.potential_id=potential_home_buyer.id INNER JOIN house_info ON review.house_info_id=house_info.id;")
 
-  	elsif input == "manipulate"
-  		puts "manipulated"
+# have option to exit out and give a thank you message
 
   	else input == "done"
   		puts "thank you"

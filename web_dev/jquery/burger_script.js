@@ -1,7 +1,17 @@
 console.log("The script is working!");
 
 $(document).ready(function(){
-    $("p1").click(function(){
+    $(".two").click(function(){
         $(this).hide();
     });
 });
+
+$(document).ready(function(){
+    $(".zero").click(function(){
+        $(this).css("background-color", "red");
+    });
+});
+
+$( ".one" ).append( "<strong>Let's be honest though.</strong>" );
+
+

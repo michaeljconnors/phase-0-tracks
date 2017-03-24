@@ -25,3 +25,9 @@ post '/students' do
 end
 
 # add static resources
+
+# create a new route
+
+get '/edit_form' do
+  erb :edit_form
+end
